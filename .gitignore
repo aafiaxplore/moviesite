@@ -1,0 +1,6 @@
+How It Works:
+
+1.Search by Code: Users can enter a unique movie code (e.g., IMDb ID, TMDB ID) into the search bar.
+2.Fetch Data: The app sends an API request to TMDB using the provided movie code.
+3.Display Results: Movie details such as title, release date, overview, poster image, and ratings are dynamically displayed based on the response.
+4.Responsive Interface: The site adapts to various screen sizes, ensuring a good user experience on desktops, tablets, and mobile devices.
