@@ -3,43 +3,233 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Code Flix</title>
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <style>
+        /* Global styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1a1a1a;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        h1, h2 {
+            color: #f5c518;
+        }
+
+        h2 {
+            margin-top: 40px;
+            color: #f5c518;
+        }
+
+        /* Elegant, Cinematic, Premium colors */
+        body.elegant-theme {
+            background-color: #0f0f0f;
+            color: #e0e0e0;
+        }
+
+        nav {
+            background-color: #2a2a2a;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 2px solid #333;
+        }
+
+        h1 {
+            font-size: 40px;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        /* Input box */
+        label {
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: block;
+            color: #e0e0e0;
+        }
+
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #f5c518;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: #e0b415;
+            box-shadow: 0 0 8px rgba(245, 197, 24, 0.5);
+        }
+
+        button {
+            background-color: #f5c518;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #e0b415;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Iframe styling */
+        iframe {
+            width: 100%;
+            max-width: 1500px;
+            height: 750px;
+            border: 1px solid #444;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2a2a2a;
+            text-align: center;
+            padding: 20px;
+            font-size: 16px;
+            color: #e0e0e0;
+            margin-top: 30px;
+        }
+
+        footer a {
+            color: #e0e0e0;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: #0f0f0f;
+            color: #fff;
+        }
+
+        body.dark-mode nav {
+            background-color: #333;
+        }
+
+        body.dark-mode footer {
+            background-color: #222;
+        }
+
+        body.dark-mode input,
+        body.dark-mode button {
+            background-color: #333;
+            color: #fff;
+        }
+
+        body.dark-mode button:hover {
+            background-color: #222;
+        }
+
+        /* Thank You message */
+        .thank-you {
+            font-size: 18px;
+            margin-top: 20px;
+            font-style: italic;
+            color: #e0e0e0;
+        }
+
+        .top-comment {
+            text-align: center;
+            font-size: 32px;
+            color: #f5c518;
+            margin-top: 40px;
+            font-family: 'Shadows Into Light', cursive; /* Funky Handwriting font */
+        }
+
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .dark-mode-toggle label {
+            color: #f5c518;
+            margin-right: 10px;
+        }
+    </style>
 </head>
-<body>
-   
-        <header>
-            <nav>
-                <h1 id="Title">Product Gallery</h1>
-                <button id="flip">Dark Mode Off</button>
-            </nav>
-        </header>
-        <div>
-            <label for="movie_name">Enter Movie Code:</label><input id="movie_name" type="text"><button id="update_btn">Load Movie</button>
-        </div>
-        <iframe id ="movie_iframe" src="https://vidsrc.xyz/embed/movie?imdb=tt13186482" style="width: 1500px; height: 750px;" frameborder="1" referrerpolicy="origin" allowfullscreen id="movie_iframe"></iframe>
-        <h2>Product Api reference</h2>
-        <main id="container"></main>
-        <!-- <script src="index.js"></script>
-        <script src="darkmode.js"></script>
-        <script src="test.js"></script> -->
-    
-        <script>
-            // Get references to elements
-            const movieInput = document.getElementById('movie_name');
-            const updateButton = document.getElementById('update_btn');
-            const iframe = document.getElementById('movie_iframe');
-    
-            // Add event listener to the button
-            updateButton.addEventListener('click', () => {
-                const movieCode = movieInput.value.trim(); // Get and trim the input value
-                if (movieCode) {
-                    // Update the iframe src
-                    iframe.src = `https://vidsrc.xyz/embed/movie?imdb=${movieCode}`;
-                } else {
-                    alert('Please enter a valid movie code.');
-                }
-            });
-        </script>
-    
+<body class="elegant-theme">
+    <header>
+        <nav>
+            <h1 id="Title">Code Flix</h1>
+        </nav>
+    </header>
+
+    <!-- Dark Mode Toggle -->
+    <div class="dark-mode-toggle">
+        <label for="darkMode">Dark Mode:</label>
+        <input type="checkbox" id="darkMode">
+    </div>
+
+    <!-- Comment section at the top -->
+    <div class="top-comment">
+        <p><em>Theater ka zamana gaya, ab bas code ka jamana hai!</em></p>
+    </div>
+
+    <div style="text-align: center; margin-top: 30px;">
+        <label for="movie_name">Enter Movie Code:</label>
+        <input id="movie_name" type="text" placeholder="Enter Movie Code">
+        <button id="update_btn">Load Movie</button>
+    </div>
+
+    <iframe id="movie_iframe" src="https://vidsrc.xyz/embed/movie?imdb=tt13186482" frameborder="1" referrerpolicy="origin" allowfullscreen></iframe>
+
+    <!-- Footer -->
+    <footer>
+        <p>Made by <strong><a href="mailto:aafiaakram.projects@gmail.com">AAFIA AKRAM</a></strong></p>
+        <p class="thank-you">Thank you for visiting!</p>
+    </footer>
+
+    <script>
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkMode');
+        darkModeToggle.addEventListener('change', () => {
+            if (darkModeToggle.checked) {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
+        });
+
+        // Get references to elements
+        const movieInput = document.getElementById('movie_name');
+        const updateButton = document.getElementById('update_btn');
+        const iframe = document.getElementById('movie_iframe');
+        
+        // Add event listener to the update button
+        updateButton.addEventListener('click', () => {
+            const movieCode = movieInput.value.trim(); // Get and trim the input value
+            if (movieCode) {
+                // Update the iframe src
+                iframe.src = `https://vidsrc.xyz/embed/movie?imdb=${movieCode}`;
+            } else {
+                alert('Please enter a valid movie code.');
+            }
+        });
+    </script>
 </body>
 </html>
+
